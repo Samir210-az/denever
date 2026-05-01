@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Denver II Profesional İnkişaf Testi – Animasiyalı & Bərabər Suallar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #e8f0ec 0%, #dbe9e2 100%);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            padding: 1.5rem;
+            color: #1a3a2f;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(0px);
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        /* header */
+        .header {
+            background: linear-gradient(135deg, #0e5c49, #1d8f72);
+            padding: 2rem 2rem 1.8rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::after {
+            content: "🧸";
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            font-size: 100px;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+        .header h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .badge {
+            background: rgba(255,255,210,0.2);
+            padding: 0.25rem 1rem;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .subhead {
+            margin-top: 0.5rem;
+            opacity: 0.85;
+            font-size: 0.9rem;
+        }
+        /* info panel */
+        .info-panel {
+            background: #f6fef9;
+            margin: 1.5rem 2rem 0.5rem 2rem;
+            padding: 1rem 1.8rem;
+            border-radius: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            border: 1px solid #cee6dd;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .info-field {
+            flex: 1;
+            min-width: 160px;
+        }
+        .info-field label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #1a6e5a;
+            letter-spacing: 0.5px;
+        }
+        .info-field input {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border-radius: 40px;
+            border: 1.5px solid #dcf0e9;
+            background: white;
+            font-family: 'Inter', monospace;
+            transition: all 0.2s;
+        }
+        .info-field input:focus {
+            border-color: #289672;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(40,150,114,0.2);
+        }
+        /* domain cards */
+        .domain-card {
+            margin: 1.5rem 2rem;
+            border-radius: 28px;
+            background: white;
+            border: 1px solid #e2f0ea;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        }
+        .domain-card:hover {
+            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        .domain-title {
+            background: #f2fbf7;
+            padding: 1.1rem 1.8rem;
+            border-radius: 28px 28px 24px 24px;
+            border-bottom: 2px solid #cce8df;
+        }
+        .domain-title h2 {
+            font-size: 1.45rem;
+            color: #165f4b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .domain-desc {
+            font-size: 0.7rem;
+            color: #498573;
+            margin-top: 4px;
+        }
+        /* questions grid - üfüqi, lakin mobilde alt-alta */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 1rem;
+            padding: 1.4rem;
+        }
+        .test-item {
+            background: #ffffff;
+            border: 1px solid #e3f0ea;
+            border-radius: 24px;
+            padding: 0.9rem;
+            transition: all 0.2s;
+        }
+        .test-item:hover {
+            background: #fdfdfb;
+            border-color: #bfdfd3;
+        }
+        .item-text {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #1e493e;
+            margin-bottom: 6px;
+        }
+        .item-norm {
+            background: #eef6f2;
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #146454;
+            margin-bottom: 12px;
+        }
+        .item-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .item-options label {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #fefefe;
+            border: 1px solid #d7eae2;
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+        .item-options label:hover {
+            background: #e9f4ef;
+        }
+        .item-options input {
+            accent-color: #1e7a63;
+            width: 14px;
+            height: 14px;
+        }
+        /* action buttons */
+        .action-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 0.5rem 2rem 2rem 2rem;
+        }
+        .btn {
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .btn-primary {
+            background: linear-gradient(105deg, #1c765f, #1b8b6f);
+            color: white;
+            border: none;
+            box-shadow: 0 8px 18px -8px rgba(27,117,90,0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(105deg, #145e4b, #147a60);
+            box-shadow: 0 12px 22px -10px rgba(27,117,90,0.5);
+        }
+        .btn-secondary {
+            background: #ecf3f0;
+            border: 1px solid #c8dfd6;
+            color: #2b6251;
+        }
+        .btn-secondary:hover {
+            background: #e0ece6;
+            transform: translateY(-2px);
+        }
+        .btn-report {
+            background: #fdf3e0;
+            border: 1px solid #f0dbbe;
+            color: #956e3c;
+        }
+        .btn-report:hover {
+            background: #f7e9d6;
+            transform: translateY(-2px);
+        }
+        /* result panel */
+        .results-panel {
+            background: #f8fffc;
+            margin: 0 2rem 2rem 2rem;
+            border-radius: 32px;
+            padding: 1.5rem;
+            border-top: 5px solid #289672;
+            display: none;
+            animation: fadeSlideUp 0.4s ease-out;
+        }
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .results-panel h3 {
+            font-size: 1.5rem;
+            color: #175f4d;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .detail-summary {
+            background: white;
+            border-radius: 24px;
+            padding: 1.2rem;
+            max-height: 380px;
+            overflow-y: auto;
+            font-size: 0.8rem;
+            border: 1px solid #dbefe7;
+            margin-top: 1.2rem;
+        }
+        .status-delay { color: #d63918; font-weight: 700; }
+        .status-warn { color: #e67e22; font-weight: 700; }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.7rem;
+            color: #699e8b;
+            border-top: 1px solid #deede7;
+        }
+        @media (max-width: 700px) {
+            body { padding: 0.8rem; }
+            .questions-grid { grid-template-columns: 1fr; gap: 0.8rem; padding: 1rem; }
+            .domain-card { margin: 1rem; }
+            .action-bar, .info-panel { margin-left: 1rem; margin-right: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Denver II İnkişaf Testi <span class="badage">📋 peşəkar versiya</span></h1>
+        <div class="subhead">Xüsusi qayğıya ehtiyacı olan uşaqlar üçün fərdi qiymətləndirmə • 4 sahə • bərabər sayda suallar (15+15+15+15)</div>
+    </div>
+
+    <div class="info-panel">
+        <div class="info-field"><label>👶 Uşağın adı / kodu</label><input type="text" id="childName" placeholder="Məs. Həsən"></div>
+        <div class="info-field"><label>📅 Yaş (ayla)</label><input type="number" id="childAge" placeholder="28" min="0" max="78"></div>
+        <div class="info-field"><label>📆 Test tarixi</label><input type="date" id="testDate"></div>
+    </div>
+
+    <div id="domainsStack"></div>
+
+    <div class="action-bar">
+        <button class="btn btn-primary" id="analyzeBtn">📊 Psixoloji analiz et</button>
+        <button class="btn btn-secondary" id="resetBtn">⟳ Cavabları sıfırla</button>
+        <button class="btn btn-report" id="reportBtn">📄 Valideyn çıxarışı (arayış)</button>
+    </div>
+
+    <div id="resultsArea" class="results-panel">
+        <h3>📈 Nəticə və inkişaf profili</h3>
+        <div id="resultsBrief"></div>
+        <div id="extraDetails" class="detail-summary"></div>
+    </div>
+    <footer>Bu test peşəkar diaqnozu əvəz etmir. Məlumatlandırma və erkən müdaxilə üçün istifadə edin.</footer>
+</div>
+
+<script>
+    // ================= BƏRABƏR SUALLAR (hər domaində 15 ədəd) =================
+    const domainsData = {
+        personalSocial: {
+            title: "🧸 Şəxsi-Sosial",
+            desc: "Özünəxidmət, emosiya, sosial qarşılıqlılıq",
+            items: [
+                { text: "Tanış səsə baş çevirir", normMonth: 2.5 },
+                { text: "Öz adına gülümsəmə ilə cavab verir", normMonth: 6 },
+                { text: "Böyüklərin əl çalmasını təqlid edir", normMonth: 9 },
+                { text: "Sadə əmrləri başa düşür ('gəl', 'ver')", normMonth: 12 },
+                { text: "Oyuncağı başqasına tərəf uzadır", normMonth: 14 },
+                { text: "Geyinmə zamanı qolunu qoltuğa keçirir", normMonth: 18 },
+                { text: "Qaşıq tutub ağzına aparmağa cəhd edir", normMonth: 16 },
+                { text: "Öz duyğularını mimika/göstərir", normMonth: 24 },
+                { text: "Əşyaları yerinə qoymağa kömək edir", normMonth: 28 },
+                { text: "Sadə sosial qaydaları tanıyır (növbə gözləmə)", normMonth: 36 },
+                { text: "Öz əşyalarını başqalarınınkından ayırır", normMonth: 30 },
+                { text: "Əl-ələ oyun oynayır ('əl çal, əl çal')", normMonth: 22 },
+                { text: "Dostlarına maraq göstərir (yanında oynama)", normMonth: 32 },
+                { text: "Təşəkkür, salam kimi sözləri işlədə bilir", normMonth: 34 },
+                { text: "Gündəlik işlərdə müstəqillik (əllərini yuma)", normMonth: 42 }
+            ]
+        },
+        fineMotor: {
+            title: "✍️ İncə Motor",
+            desc: "Əl-göz koordinasiyası, tutma, rəsm, tikinti",
+            items: [
+                { text: "Hərəkət edən üzü izləyir", normMonth: 2 },
+                { text: "Çınqıldağı əlində ən az 5 saniyə tutur", normMonth: 4 },
+                { text: "Əşyanı bir əlindən digərinə keçirir", normMonth: 6 },
+                { text: "Kiçik əşyanı baş və şəhadət barmağı ilə tutur", normMonth: 10 },
+                { text: "3-4 blokdan qüllə qurur", normMonth: 18 },
+                { text: "Qaralama xətlər çəkir", normMonth: 16 },
+                { text: "Dairə şəkli çəkə bilir", normMonth: 28 },
+                { text: "Düymələri böyük düymələri aça bilir", normMonth: 30 },
+                { text: "Qayçı ilə kağız kəsə bilir", normMonth: 36 },
+                { text: "4-6 hissəli puzzle yığa bilir", normMonth: 32 },
+                { text: "İpə muncuq dizə bilir (böyük muncuqlar)", normMonth: 26 },
+                { text: "Kvadrat şəkli çəkir", normMonth: 40 },
+                { text: "Əlində qələmi düzgün tutur", normMonth: 38 },
+                { text: "Üçbucaq çəkir", normMonth: 48 },
+                { text: "Sadə labirint çəkə bilir (qələm izi)", normMonth: 44 }   // YENİ əlavə
+            ]
+        },
+        language: {
+            title: "🗣️ Dil & Ünsiyyət",
+            desc: "Reseptiv, ekspressiv dil, söz ehtiyatı",
+            items: [
+                { text: "Səslər çıxarır (gurultu, ağulama)", normMonth: 2 },
+                { text: "Səsli gülüş və xoş səslər çıxarır", normMonth: 5 },
+                { text: "Təkrar hecalar 'ba-ba', 'da-da'", normMonth: 8 },
+                { text: "Ən az 3 mənalı söz (ana, ata, su)", normMonth: 13 },
+                { text: "Bədən hissələrini göstərir (burun, göz)", normMonth: 18 },
+                { text: "İstədiyi əşyanı adı ilə söyləyir", normMonth: 20 },
+                { text: "2-3 sözlü sadə cümlə qurur", normMonth: 24 },
+                { text: "Sadə şəkilləri adlandıra bilir (top, pişik)", normMonth: 28 },
+                { text: "Əvəzliklərdən istifadə edir (mən, sən)", normMonth: 30 },
+                { text: "Nə? kim? suallarını başa düşür", normMonth: 26 },
+                { text: "Sadə hekayə şəklini izah edir", normMonth: 36 },
+                { text: "Rəngləri tanıyır (ən az 3 rəng)", normMonth: 34 },
+                { text: "Əks mənaları başa düşür (böyük-kiçik)", normMonth: 38 },
+                { text: "Davamlı söhbət edə bilir (3-4 cümlə)", normMonth: 42 },
+                { text: "Sadə tapmaca və sualları cavablandırır", normMonth: 40 }   // YENİ əlavə
+            ]
+        },
+        grossMotor: {
+            title: "🏃 Ümumi Motor",
+            desc: "Tarazlıq, yerimə, qaçma, tullanma",
+            items: [
+                { text: "Başını qısa müddət dik tutur (üzüstü)", normMonth: 2 },
+                { text: "Arxadan yan üstə dönür", normMonth: 4.5 },
+                { text: "Dəstəksiz oturur (10+ saniyə)", normMonth: 7 },
+                { text: "Qarın üstə sürünür", normMonth: 9 },
+                { text: "Mebeldən tutaraq ayağa qalxır", normMonth: 11 },
+                { text: "Müstəqil yeriyir (4 addım)", normMonth: 14 },
+                { text: "Yerindən tullanır (iki ayaqla)", normMonth: 28 },
+                { text: "Bir ayaq üstə 2 saniyə dayanır", normMonth: 32 },
+                { text: "Pilləkənləri tutaraq çıxır", normMonth: 22 },
+                { text: "Topu yuxarı atır və tutmağa cəhd edir", normMonth: 30 },
+                { text: "Geri geri yeriyə bilir", normMonth: 26 },
+                { text: "Təpiklə topu vura bilir", normMonth: 34 },
+                { text: "İki ayaqla yerindən uzağa tullanar", normMonth: 38 },
+                { text: "Bir ayaq üstə 5 saniyə dayanır", normMonth: 42 },
+                { text: "Velosipeddə (üçtəkərli) pedal çevirə bilir", normMonth: 36 }
+            ]
+        }
+    };
+    const domainOrder = ["personalSocial", "fineMotor", "language", "grossMotor"];
+
+    // Render test - hər bir domain grid şəklində
+    function renderTest() {
+        const container = document.getElementById("domainsStack");
+        container.innerHTML = "";
+        for (let key of domainOrder) {
+            const dom = domainsData[key];
+            const card = document.createElement("div");
+            card.className = "domain-card";
+            card.innerHTML = `
+                <div class="domain-title">
+                    <h2>${dom.title}</h2>
+                    <div class="domain-desc">${dom.desc}</div>
+                </div>
+                <div class="questions-grid" id="grid-${key}"></div>
+            `;
+            container.appendChild(card);
+            const grid = card.querySelector(`.questions-grid`);
+            dom.items.forEach((item, idx) => {
+                const itemId = `${key}_${idx}`;
+                const normShow = (item.normMonth % 1 === 0) ? item.normMonth + " ay" : item.normMonth.toFixed(1) + " ay";
+                const div = document.createElement("div");
+                div.className = "test-item";
+                div.innerHTML = `
+                    <div class="item-text">${item.text}</div>
+                    <div class="item-norm">📌 normativ: ${normShow}</div>
+                    <div class="item-options">
+                        <label><input type="radio" name="${itemId}" value="yes"> ✅ bacarır</label>
+                        <label><input type="radio" name="${itemId}" value="no"> ❌ bacarmır</label>
+                        <label><input type="radio" name="${itemId}" value="na"> 👁️ müşahidə yox</label>
+                    </div>
+                `;
+                grid.appendChild(div);
+            });
+        }
+    }
+
+    // cavabları yığ
+    function getAllResponses() {
+        let responses = [];
+        for (let key of domainOrder) {
+            const items = domainsData[key].items;
+            for (let i = 0; i < items.length; i++) {
+                const radioName = `${key}_${i}`;
+                const selected = document.querySelector(`input[name="${radioName}"]:checked`);
+                const val = selected ? selected.value : null;
+                responses.push({
+                    domain: key,
+                    text: items[i].text,
+                    normMonth: items[i].normMonth,
+                    value: val
+                });
+            }
+        }
+        return responses;
+    }
+
+    // YENİ ANALİZ: təxmini inkişaf yaşı = keçilən maddələrin normMonth ortalama
+    // digər statistikalar eyni
+    function computeAdvancedAnalysis() {
+        const ageInput = document.getElementById("childAge").value;
+        let childAge = ageInput ? parseFloat(ageInput) : null;
+        if (childAge === null || isNaN(childAge) || childAge < 0) {
+            alert("Zəhmət olmasa uşağın yaşını aylarla daxil edin (0-72).");
+            return null;
+        }
+        const responses = getAllResponses();
+        let domainStats = {};
+        for (let k of domainOrder) domainStats[k] = { delays: 0, warnings: 0, totalAssessed: 0, passed: 0, itemsDetail: [] };
+        let passedNormValues = []; // yalnız "bacarır" olanların normMonth dəyərləri
+        
+        for (let r of responses) {
+            if (!r.value || r.value === "na") continue;
+            const isPass = (r.value === "yes");
+            const norm = r.normMonth;
+            const age = childAge;
+            domainStats[r.domain].totalAssessed++;
+            if (isPass) {
+                domainStats[r.domain].passed++;
+                passedNormValues.push(norm);
+            }
+            let status = "normal";
+            if (!isPass && age > norm) { status = "gecikme"; domainStats[r.domain].delays++; }
+            else if (!isPass && age >= norm * 0.8 && age <= norm) { status = "xəbərdarlıq"; domainStats[r.domain].warnings++; }
+            domainStats[r.domain].itemsDetail.push({
+                text: r.text,
+                normMonth: norm,
+                childAge: age,
+                isPass: isPass,
+                status: status
+            });
+        }
+        let totalDelays = 0, totalWarnings = 0;
+        for (let k of domainOrder) { totalDelays += domainStats[k].delays; totalWarnings += domainStats[k].warnings; }
+        
+        // ORTALAMA İNKİŞAF YAŞI (keçilən maddələrin normativ yaş ortalaması)
+        let avgDevAge = 0;
+        if (passedNormValues.length > 0) {
+            const sum = passedNormValues.reduce((a,b) => a + b, 0);
+            avgDevAge = sum / passedNormValues.length;
+        }
+        // klinik şərh
+        let clinicalInterpret = "";
+        if (totalDelays >= 3) clinicalInterpret = "Ciddi inkişaf geriliyi riski. Erkən müdaxilə təcili tövsiyə olunur.";
+        else if (totalDelays >= 1) clinicalInterpret = "Yüngül/orta dərəcəli gecikmə aşkarlandı. Dəstək proqramlarına müraciət edin.";
+        else if (totalWarnings >= 2) clinicalInterpret = "Sərhəd zonası (diqqət). 3-6 ay sonra test təkrarlanmalıdır.";
+        else clinicalInterpret = "İnkişaf yaşa əsasən normada. Müntəzəm monitorinq kifayətdir.";
+        
+        return { domainStats, childAge, totalDelays, avgDevAge, clinicalInterpret, passedCount: passedNormValues.length };
+    }
+
+    function displayResults() {
+        const analysis = computeAdvancedAnalysis();
+        if (!analysis) return;
+        const { domainStats, childAge, totalDelays, avgDevAge, clinicalInterpret } = analysis;
+        const childName = document.getElementById("childName").value.trim() || "Qeyd edilməyib";
+        const testDate = document.getElementById("testDate").value || "tarix yoxdur";
+        
+        let briefHtml = `<div style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom: 1.2rem;">`;
+        for (let key of domainOrder) {
+            const d = domainStats[key];
+            const percent = d.totalAssessed ? Math.round((d.passed / d.totalAssessed)*100) : 0;
+            briefHtml += `<div style="flex:1; background:white; border-radius: 24px; padding:0.8rem; text-align:center; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
+                <b>${domainsData[key].title}</b><br>✅ ${d.passed}/${d.totalAssessed}<br>📊 ${percent}%<br>
+                ${d.delays>0 ? `<span style="color:#c7362b;">⛔ ${d.delays} gecikmə</span><br>` : ""}
+                ${d.warnings>0 ? `<span style="color:#e67e22;">⚠️ ${d.warnings} xəbərdarlıq</span>` : ""}
+            </div>`;
+        }
+        briefHtml += `</div><div style="background:#fef4e8; border-radius: 28px; padding: 1rem; margin-top: 0.5rem;">
+            <strong>🧠 Peşəkar rəy:</strong> ${clinicalInterpret}<br>
+            <strong>📊 Təxmini inkişaf səviyyəsi (bacardığı maddələrin orta norması):</strong> ${avgDevAge.toFixed(1)} ay<br>
+            <strong>👶 Uşaq:</strong> ${childName} | Xronoloji yaş: ${childAge} ay | Test tarixi: ${testDate}<br>
+            <strong>🔔 Toplam gecikmə sayı:</strong> ${totalDelays}
+        </div>`;
+        
+        // Ətraflı maddə təhlili (Sahə-sahə)
+        let detailHtml = `<h4 style="margin:0 0 12px 0;">🔍 Maddə-maddə klinik status</h4>`;
+        for (let key of domainOrder) {
+            const items = domainStats[key].itemsDetail;
+            if (!items.length) continue;
+            detailHtml += `<div style="margin-bottom: 16px;"><b>${domainsData[key].title}</b><ul style="margin-left: 1rem; list-style-type: circle;">`;
+            for (let it of items) {
+                let statusClass = "", statusText = "";
+                if (it.status === "gecikme") { statusClass = "status-delay"; statusText = "🔴 Gecikmə"; }
+                else if (it.status === "xəbərdarlıq") { statusClass = "status-warn"; statusText = "🟠 Xəbərdarlıq"; }
+                else { statusText = "✅ Normal"; }
+                detailHtml += `<li><span>${it.text} (norm: ${it.normMonth} ay) → </span><span class="${statusClass}">${statusText}</span></li>`;
+            }
+            detailHtml += `</ul></div>`;
+        }
+        document.getElementById("resultsBrief").innerHTML = briefHtml;
+        document.getElementById("extraDetails").innerHTML = detailHtml;
+        document.getElementById("resultsArea").style.display = "block";
+        window.scrollTo({ top: document.getElementById("resultsArea").offsetTop - 30, behavior: "smooth" });
+    }
+
+    function resetAllAnswers() {
+        const radios = document.querySelectorAll('input[type="radio"]');
+        radios.forEach(r => r.checked = false);
+        document.getElementById("resultsArea").style.display = "none";
+    }
+    
+    // Valideyn çıxarışı (arayış) - ortalama inkişaf yaşı ilə
+    function generateParentReport() {
+        const analysis = computeAdvancedAnalysis();
+        if (!analysis) return;
+        const { domainStats, childAge, avgDevAge, clinicalInterpret } = analysis;
+        const childName = document.getElementById("childName").value.trim() || "Adsız";
+        const testDate = document.getElementById("testDate").value || new Date().toISOString().slice(0,10);
+        let reportHtml = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Denver Çıxarış - ${childName}</title>
+        <style>body{font-family:'Inter',sans-serif;padding:2rem;max-width:1000px;margin:auto;background:#f6fcf9;}.report{border:2px solid #cee6dd;border-radius:36px;padding:2rem;background:white;}h1{color:#146454;}</style></head>
+        <body><div class="report"><h1>📄 Denver İnkişaf Testi - Valideyn Arayışı</h1>
+        <p><strong>Uşağın adı:</strong> ${childName} &nbsp;| <strong>Yaş:</strong> ${childAge} ay &nbsp;| <strong>Test tarixi:</strong> ${testDate}</p>
+        <p><strong>Xülasə:</strong> ${clinicalInterpret}</p>
+        <p><strong>📊 Təxmini inkişaf səviyyəsi (bacarıq norması ortalaması):</strong> ${avgDevAge.toFixed(1)} ay</p>
+        <h3>Sahəvi nəticələr</h3><ul>`;
+        for (let key of domainOrder) {
+            const d = domainStats[key];
+            const percent = d.totalAssessed ? Math.round((d.passed/d.totalAssessed)*100) : 0;
+            reportHtml += `<li><strong>${domainsData[key].title}:</strong> ${d.passed}/${d.totalAssessed} bacarıq (${percent}%) – Gecikmə: ${d.delays}, Xəbərdarlıq: ${d.warnings}</li>`;
+        }
+        reportHtml += `</ul><h3>🔎 Ətraflı maddə analizi:</h3>`;
+        for (let key of domainOrder) {
+            const items = domainStats[key].itemsDetail;
+            if(items.length){
+                reportHtml += `<details><summary><b>${domainsData[key].title}</b></summary><ul>`;
+                for(let it of items){
+                    let stat = (it.status === "gecikme") ? "GERİLƏMƏ" : (it.status === "xəbərdarlıq") ? "DİQQƏT" : "NORMAL";
+                    reportHtml += `<li>${it.text} (norm: ${it.normMonth} ay) → ${stat}</li>`;
+                }
+                reportHtml += `</ul></details>`;
+            }
+        }
+        reportHtml += `<div style="background:#fef6e8; border-radius: 24px; padding:1rem; margin-top:1.5rem;"><strong>⚠️ Qeyd:</strong> Bu arayış məlumat xarakterlidir, peşəkar diaqnozu əvəz etmir. Mütəxəssis rəyi vacibdir.</div>
+        <p style="font-size:0.7rem; margin-top:1rem;">Yaradılma tarixi: ${new Date().toLocaleString()}</p></div></body></html>`;
+        const blob = new Blob([reportHtml], {type: "text/html"});
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        link.href = url;
+        link.download = `Denver_${childName.replace(/\s/g, "_")}_ariyash.html`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    document.getElementById("testDate").value = new Date().toISOString().slice(0,10);
+    renderTest();
+    document.getElementById("analyzeBtn").addEventListener("click", displayResults);
+    document.getElementById("resetBtn").addEventListener("click", resetAllAnswers);
+    document.getElementById("reportBtn").addEventListener("click", generateParentReport);
+</script>
+</body>
+</html>
