@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Denver II Profesional İnkişaf Testi – Animasiyalı & Bərabər Suallar</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -282,12 +283,43 @@
         }
         .status-delay { color: #d63918; font-weight: 700; }
         .status-warn { color: #e67e22; font-weight: 700; }
+        /* footer - yeni stil */
         footer {
             text-align: center;
-            padding: 1rem;
-            font-size: 0.7rem;
-            color: #699e8b;
+            padding: 1.2rem;
+            font-size: 0.8rem;
+            color: #5c8b7a;
             border-top: 1px solid #deede7;
+            background: #f8fefb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #146454;
+            background: rgba(29, 110, 90, 0.08);
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+        }
+        .social-link i {
+            font-size: 1.2rem;
+            color: #d62976;
+            transition: transform 0.2s;
+        }
+        .social-link:hover {
+            background: rgba(29, 110, 90, 0.15);
+            transform: translateY(-2px);
+        }
+        .social-link:hover i {
+            transform: scale(1.05);
         }
         @media (max-width: 700px) {
             body { padding: 0.8rem; }
@@ -300,8 +332,8 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1>Denver II İnkişaf Testi <span class="badage">📋 peşəkar versiya</span></h1>
-        <div class="subhead">• Xüsusi qayğıya ehtiyacı olan uşaqlar üçün fərdi qiymətləndirmə • </div>
+        <h1>Denver II İnkişaf Testi <span class="badge">📋 peşəkar versiya</span></h1>
+        <div class="subhead">Xüsusi qayğıya ehtiyacı olan uşaqlar üçün fərdi qiymətləndirmə • 4 sahə • bərabər sayda suallar (15+15+15+15)</div>
     </div>
 
     <div class="info-panel">
@@ -323,7 +355,12 @@
         <div id="resultsBrief"></div>
         <div id="extraDetails" class="detail-summary"></div>
     </div>
-    <footer>Bu test peşəkar diaqnozu əvəz etmir. Məlumatlandırma və erkən müdaxilə üçün istifadə edin.</footer>
+    <footer>
+        <a href="https://www.instagram.com/s_akhundoff" target="_blank" class="social-link">
+            <i class="fab fa-instagram"></i> by s_akhundoff
+        </a>
+        <div style="font-size: 0.7rem;">© Denver II əsasında yaradılmış peşəkar alət • Erkən müdaxilə üçün məlumatlandırma</div>
+    </footer>
 </div>
 
 <script>
