@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Denver II Profesional İnkişaf Testi – Animasiyalı & Bərabər Suallar</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -23,13 +22,11 @@
             max-width: 1400px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(0px);
             border-radius: 2.5rem;
             box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.3);
             overflow: hidden;
             transition: all 0.2s ease;
         }
-        /* header */
         .header {
             background: linear-gradient(135deg, #0e5c49, #1d8f72);
             padding: 2rem 2rem 1.8rem;
@@ -67,7 +64,6 @@
             opacity: 0.85;
             font-size: 0.9rem;
         }
-        /* info panel */
         .info-panel {
             background: #f6fef9;
             margin: 1.5rem 2rem 0.5rem 2rem;
@@ -104,7 +100,6 @@
             outline: none;
             box-shadow: 0 0 0 3px rgba(40,150,114,0.2);
         }
-        /* domain cards */
         .domain-card {
             margin: 1.5rem 2rem;
             border-radius: 28px;
@@ -135,7 +130,6 @@
             color: #498573;
             margin-top: 4px;
         }
-        /* questions grid - üfüqi, lakin mobilde alt-alta */
         .questions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
@@ -194,7 +188,6 @@
             width: 14px;
             height: 14px;
         }
-        /* action buttons */
         .action-bar {
             display: flex;
             flex-wrap: wrap;
@@ -243,7 +236,6 @@
             background: #f7e9d6;
             transform: translateY(-2px);
         }
-        /* result panel */
         .results-panel {
             background: #f8fffc;
             margin: 0 2rem 2rem 2rem;
@@ -254,14 +246,8 @@
             animation: fadeSlideUp 0.4s ease-out;
         }
         @keyframes fadeSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .results-panel h3 {
             font-size: 1.5rem;
@@ -328,7 +314,6 @@
 </div>
 
 <script>
-    // ================= BƏRABƏR SUALLAR (hər domaində 15 ədəd) =================
     const domainsData = {
         personalSocial: {
             title: "🧸 Şəxsi-Sosial",
@@ -417,7 +402,6 @@
     };
     const domainOrder = ["personalSocial", "fineMotor", "language", "grossMotor"];
 
-    // Render test - hər bir domain grid şəklində
     function renderTest() {
         const container = document.getElementById("domainsStack");
         container.innerHTML = "";
@@ -453,7 +437,6 @@
         }
     }
 
-    // cavabları yığ
     function getAllResponses() {
         let responses = [];
         for (let key of domainOrder) {
@@ -473,8 +456,6 @@
         return responses;
     }
 
-    // YENİ ANALİZ: təxmini inkişaf yaşı = keçilən maddələrin normMonth ortalama
-    // digər statistikalar eyni
     function computeAdvancedAnalysis() {
         const ageInput = document.getElementById("childAge").value;
         let childAge = ageInput ? parseFloat(ageInput) : null;
@@ -485,7 +466,7 @@
         const responses = getAllResponses();
         let domainStats = {};
         for (let k of domainOrder) domainStats[k] = { delays: 0, warnings: 0, totalAssessed: 0, passed: 0, itemsDetail: [] };
-        let passedNormValues = []; // yalnız "bacarır" olanların normMonth dəyərləri
+        let passedNormValues = [];
         
         for (let r of responses) {
             if (!r.value || r.value === "na") continue;
@@ -511,13 +492,11 @@
         let totalDelays = 0, totalWarnings = 0;
         for (let k of domainOrder) { totalDelays += domainStats[k].delays; totalWarnings += domainStats[k].warnings; }
         
-        // ORTALAMA İNKİŞAF YAŞI (keçilən maddələrin normativ yaş ortalaması)
         let avgDevAge = 0;
         if (passedNormValues.length > 0) {
             const sum = passedNormValues.reduce((a,b) => a + b, 0);
             avgDevAge = sum / passedNormValues.length;
         }
-        // klinik şərh
         let clinicalInterpret = "";
         if (totalDelays >= 3) clinicalInterpret = "Ciddi inkişaf geriliyi riski. Erkən müdaxilə təcili tövsiyə olunur.";
         else if (totalDelays >= 1) clinicalInterpret = "Yüngül/orta dərəcəli gecikmə aşkarlandı. Dəstək proqramlarına müraciət edin.";
@@ -551,7 +530,6 @@
             <strong>🔔 Toplam gecikmə sayı:</strong> ${totalDelays}
         </div>`;
         
-        // Ətraflı maddə təhlili (Sahə-sahə)
         let detailHtml = `<h4 style="margin:0 0 12px 0;">🔍 Maddə-maddə klinik status</h4>`;
         for (let key of domainOrder) {
             const items = domainStats[key].itemsDetail;
@@ -578,119 +556,47 @@
         document.getElementById("resultsArea").style.display = "none";
     }
     
-    // YENİ: Valideyn çıxarışı – yeni pəncərədə açılır, şəkil və HTML yükləmə imkanı
     function generateParentReport() {
         const analysis = computeAdvancedAnalysis();
         if (!analysis) return;
         const { domainStats, childAge, avgDevAge, clinicalInterpret } = analysis;
         const childName = document.getElementById("childName").value.trim() || "Adsız";
         const testDate = document.getElementById("testDate").value || new Date().toISOString().slice(0,10);
-        
-        // Yeni pəncərə üçün HTML məzmunu
-        const reportContent = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-            <title>Denver Çıxarış - ${childName}</title>
-            <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-            <style>
-                * { margin: 0; padding: 0; box-sizing: border-box; }
-                body {
-                    background: #eef3f0;
-                    font-family: 'Inter', system-ui, sans-serif;
-                    padding: 2rem;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    min-height: 100vh;
+        let reportHtml = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Denver Çıxarış - ${childName}</title>
+        <style>body{font-family:'Inter',sans-serif;padding:2rem;max-width:1000px;margin:auto;background:#f6fcf9;}.report{border:2px solid #cee6dd;border-radius:36px;padding:2rem;background:white;}h1{color:#146454;}</style></head>
+        <body><div class="report"><h1>📄 Denver İnkişaf Testi - Valideyn Arayışı</h1>
+        <p><strong>Uşağın adı:</strong> ${childName} &nbsp;| <strong>Yaş:</strong> ${childAge} ay &nbsp;| <strong>Test tarixi:</strong> ${testDate}</p>
+        <p><strong>Xülasə:</strong> ${clinicalInterpret}</p>
+        <p><strong>📊 Təxmini inkişaf səviyyəsi (bacarıq norması ortalaması):</strong> ${avgDevAge.toFixed(1)} ay</p>
+        <h3>Sahəvi nəticələr</h3><ul>`;
+        for (let key of domainOrder) {
+            const d = domainStats[key];
+            const percent = d.totalAssessed ? Math.round((d.passed/d.totalAssessed)*100) : 0;
+            reportHtml += `<li><strong>${domainsData[key].title}:</strong> ${d.passed}/${d.totalAssessed} bacarıq (${percent}%) – Gecikmə: ${d.delays}, Xəbərdarlıq: ${d.warnings}</li>`;
+        }
+        reportHtml += `</ul><h3>🔎 Ətraflı maddə analizi:</h3>`;
+        for (let key of domainOrder) {
+            const items = domainStats[key].itemsDetail;
+            if(items.length){
+                reportHtml += `<details><summary><b>${domainsData[key].title}</b></summary><ul>`;
+                for(let it of items){
+                    let stat = (it.status === "gecikme") ? "GERİLƏMƏ" : (it.status === "xəbərdarlıq") ? "DİQQƏT" : "NORMAL";
+                    reportHtml += `<li>${it.text} (norm: ${it.normMonth} ay) → ${stat}</li>`;
                 }
-                .report-container {
-                    max-width: 1000px;
-                    width: 100%;
-                    background: white;
-                    border-radius: 2rem;
-                    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
-                    overflow: hidden;
-                    padding: 2rem;
-                }
-                h1 { color: #146454; margin-bottom: 0.5rem; }
-                .meta { color: #2a6d5c; margin-bottom: 1rem; border-bottom: 1px solid #cde0d9; padding-bottom: 0.5rem; }
-                .scores-grid { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; }
-                .score-card { flex: 1; background: #f6fcf9; border-radius: 1rem; padding: 0.8rem; text-align: center; border: 1px solid #cee6dd; }
-                .clinical-note { background: #fef4e8; border-radius: 1.5rem; padding: 1rem; margin: 1rem 0; }
-                ul { margin-left: 1.5rem; margin-top: 0.5rem; }
-                .btn-bar { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
-                button { padding: 0.6rem 1.2rem; border: none; border-radius: 60px; font-weight: bold; cursor: pointer; font-family: inherit; background: #1b6e5a; color: white; }
-                button:hover { opacity: 0.9; }
-                #captureArea { background: white; padding: 1rem; border-radius: 28px; }
-                footer { margin-top: 2rem; font-size: 0.7rem; text-align: center; color: #6f9a8a; }
-            </style>
-        </head>
-        <body>
-        <div class="report-container">
-            <div id="captureArea">
-                <h1>📄 Denver İnkişaf Testi - Valideyn Arayışı</h1>
-                <div class="meta"><strong>Uşağın adı:</strong> ${childName} &nbsp;| <strong>Yaş:</strong> ${childAge} ay &nbsp;| <strong>Test tarixi:</strong> ${testDate}</div>
-                <p><strong>Xülasə:</strong> ${clinicalInterpret}</p>
-                <p><strong>📊 Təxmini inkişaf səviyyəsi (bacarıq norması ortalaması):</strong> ${avgDevAge.toFixed(1)} ay</p>
-                <div class="scores-grid">
-                    ${domainOrder.map(key => {
-                        const d = domainStats[key];
-                        const percent = d.totalAssessed ? Math.round((d.passed/d.totalAssessed)*100) : 0;
-                        return `<div class="score-card"><strong>${domainsData[key].title}</strong><br>✅ ${d.passed}/${d.totalAssessed}<br>${percent}%<br>${d.delays>0 ? `⛔ ${d.delays} gecikmə` : ""} ${d.warnings>0 ? `⚠️ ${d.warnings} xəbərdarlıq` : ""}</div>`;
-                    }).join('')}
-                </div>
-                <h3>🔎 Ətraflı maddə analizi:</h3>
-                ${domainOrder.map(key => {
-                    const items = domainStats[key].itemsDetail;
-                    if(!items.length) return '';
-                    return `<details><summary><b>${domainsData[key].title}</b></summary><ul>${items.map(it => {
-                        let stat = (it.status === "gecikme") ? "GERİLƏMƏ" : (it.status === "xəbərdarlıq") ? "DİQQƏT" : "NORMAL";
-                        return `<li>${it.text} (norm: ${it.normMonth} ay) → ${stat}</li>`;
-                    }).join('')}</ul></details>`;
-                }).join('')}
-                <div style="background:#fef6e8; border-radius: 1rem; padding:1rem; margin-top:1rem;">⚠️ Qeyd: Bu arayış məlumat xarakterlidir, peşəkar diaqnozu əvəz etmir.</div>
-            </div>
-            <div class="btn-bar">
-                <button id="saveAsImageBtn">📸 Şəkil kimi yadda saxla (PNG)</button>
-                <button id="saveAsHtmlBtn">💾 HTML fayl kimi yüklə</button>
-                <button onclick="window.close()">✖ Bağla</button>
-            </div>
-            <footer>Yaradılma tarixi: ${new Date().toLocaleString()}</footer>
-        </div>
-        <script>
-            document.getElementById('saveAsImageBtn').addEventListener('click', function() {
-                const element = document.getElementById('captureArea');
-                html2canvas(element, { scale: 2, backgroundColor: '#ffffff' }).then(canvas => {
-                    const link = document.createElement('a');
-                    link.download = 'Denver_${childName.replace(/\s/g, "_")}_arayish.png';
-                    link.href = canvas.toDataURL();
-                    link.click();
-                }).catch(err => alert('Şəkil yaradıla bilmədi: '+err));
-            });
-            document.getElementById('saveAsHtmlBtn').addEventListener('click', function() {
-                const htmlContent = document.documentElement.outerHTML;
-                const blob = new Blob([htmlContent], {type: 'text/html'});
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'Denver_${childName.replace(/\s/g, "_")}_raport.html';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            });
-        </script>
-        </body>
-        </html>
-        `;
-        
-        // Yeni pəncərə aç
-        const win = window.open();
-        win.document.write(reportContent);
-        win.document.close();
+                reportHtml += `</ul></details>`;
+            }
+        }
+        reportHtml += `<div style="background:#fef6e8; border-radius: 24px; padding:1rem; margin-top:1.5rem;"><strong>⚠️ Qeyd:</strong> Bu arayış məlumat xarakterlidir, peşəkar diaqnozu əvəz etmir. Mütəxəssis rəyi vacibdir.</div>
+        <p style="font-size:0.7rem; margin-top:1rem;">Yaradılma tarixi: ${new Date().toLocaleString()}</p></div></body></html>`;
+        const blob = new Blob([reportHtml], {type: "text/html"});
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        link.href = url;
+        link.download = `Denver_${childName.replace(/\s/g, "_")}_ariyash.html`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
     }
 
     document.getElementById("testDate").value = new Date().toISOString().slice(0,10);
