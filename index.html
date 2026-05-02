@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Denver II Profesional İnkişaf Testi – Animasiyalı & Bərabər Suallar</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -269,12 +270,41 @@
         }
         .status-delay { color: #d63918; font-weight: 700; }
         .status-warn { color: #e67e22; font-weight: 700; }
+        /* footer stil */
         footer {
             text-align: center;
-            padding: 1rem;
-            font-size: 0.7rem;
-            color: #699e8b;
+            padding: 1.2rem;
+            font-size: 0.8rem;
             border-top: 1px solid #deede7;
+            background: #ffffff;
+            margin-top: 0.5rem;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+            background-size: 200% 200%;
+            color: white;
+            text-decoration: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .social-link i {
+            font-size: 1rem;
+        }
+        .social-link:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .copyright {
+            margin-top: 12px;
+            font-size: 0.7rem;
+            color: #6f9a8b;
         }
         @media (max-width: 700px) {
             body { padding: 0.8rem; }
@@ -310,7 +340,13 @@
         <div id="resultsBrief"></div>
         <div id="extraDetails" class="detail-summary"></div>
     </div>
-    <footer>Bu test peşəkar diaqnozu əvəz etmir. Məlumatlandırma və erkən müdaxilə üçün istifadə edin.</footer>
+    
+    <footer>
+        <a href="https://www.instagram.com/s_akhundoff" target="_blank" rel="noopener noreferrer" class="social-link">
+            <i class="fab fa-instagram"></i> by s_akhundoff
+        </a>
+        <div class="copyright">Bütün hüquqları qorunur. 2026</div>
+    </footer>
 </div>
 
 <script>
