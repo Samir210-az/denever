@@ -58,7 +58,6 @@
             opacity: 0.85;
             font-size: 0.9rem;
         }
-        /* yuxarı düymə və arxiv */
         .top-actions {
             display: flex;
             justify-content: flex-end;
@@ -74,17 +73,10 @@
             cursor: pointer;
             transition: 0.2s;
             color: #1a6e5a;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
             font-family: 'Inter', sans-serif;
         }
-        .archive-btn i {
-            margin-right: 6px;
-        }
-        .archive-btn:hover {
-            background: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
-        }
+        .archive-btn i { margin-right: 6px; }
+        .archive-btn:hover { background: white; transform: translateY(-2px); box-shadow: 0 5px 12px rgba(0,0,0,0.1); }
         .info-panel {
             background: #f6fef9;
             margin: 0.5rem 2rem 0.5rem 2rem;
@@ -95,16 +87,8 @@
             gap: 1.2rem;
             border: 1px solid #cee6dd;
         }
-        .info-field {
-            flex: 1;
-            min-width: 140px;
-        }
-        .info-field label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #1a6e5a;
-        }
+        .info-field { flex: 1; min-width: 140px; }
+        .info-field label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: #1a6e5a; }
         .info-field input {
             width: 100%;
             padding: 0.7rem 1rem;
@@ -120,28 +104,15 @@
             border: 1px solid #e2f0ea;
             transition: transform 0.2s ease, box-shadow 0.2s;
         }
-        .domain-card:hover {
-            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.15);
-            transform: translateY(-2px);
-        }
+        .domain-card:hover { box-shadow: 0 12px 24px -12px rgba(0,0,0,0.15); transform: translateY(-2px); }
         .domain-title {
             background: #f2fbf7;
             padding: 1.1rem 1.8rem;
             border-radius: 28px 28px 24px 24px;
             border-bottom: 2px solid #cce8df;
         }
-        .domain-title h2 {
-            font-size: 1.45rem;
-            color: #165f4b;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .domain-desc {
-            font-size: 0.7rem;
-            color: #498573;
-            margin-top: 4px;
-        }
+        .domain-title h2 { font-size: 1.45rem; color: #165f4b; display: flex; align-items: center; gap: 8px; }
+        .domain-desc { font-size: 0.7rem; color: #498573; margin-top: 4px; }
         .questions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
@@ -154,12 +125,7 @@
             border-radius: 24px;
             padding: 0.9rem;
         }
-        .item-text {
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: #1e493e;
-            margin-bottom: 6px;
-        }
+        .item-text { font-weight: 700; font-size: 0.85rem; color: #1e493e; margin-bottom: 6px; }
         .item-norm {
             background: #eef6f2;
             display: inline-block;
@@ -170,11 +136,7 @@
             color: #146454;
             margin-bottom: 12px;
         }
-        .item-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
+        .item-options { display: flex; flex-wrap: wrap; gap: 0.6rem; }
         .item-options label {
             display: inline-flex;
             align-items: center;
@@ -206,11 +168,7 @@
             transition: 0.2s;
             background: white;
         }
-        .btn-primary {
-            background: linear-gradient(105deg, #1c765f, #1b8b6f);
-            color: white;
-            box-shadow: 0 8px 18px -8px rgba(27,117,90,0.4);
-        }
+        .btn-primary { background: linear-gradient(105deg, #1c765f, #1b8b6f); color: white; box-shadow: 0 8px 18px -8px rgba(27,117,90,0.4); }
         .btn-primary:hover { transform: translateY(-3px); background: linear-gradient(105deg, #145e4b, #147a60);}
         .btn-secondary { background: #ecf3f0; border: 1px solid #c8dfd6; color: #2b6251; }
         .btn-secondary:hover { background: #e0ece6; transform: translateY(-2px);}
@@ -239,69 +197,48 @@
         }
         .status-delay { color: #d63918; font-weight: 700; }
         .status-warn { color: #e67e22; font-weight: 700; }
-        /* Modal stil */
-        .modal {
+        /* Modal fərdi dialoq */
+        .custom-modal {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             background: rgba(0,0,0,0.5);
-            z-index: 1000;
+            z-index: 2000;
             justify-content: center;
             align-items: center;
         }
-        .modal-content {
+        .custom-modal-content {
             background: white;
-            width: 90%;
-            max-width: 700px;
-            max-height: 80vh;
+            max-width: 400px;
+            width: 85%;
             border-radius: 2rem;
-            padding: 1.5rem;
-            overflow-y: auto;
-            box-shadow: 0 25px 40px rgba(0,0,0,0.2);
-            position: relative;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+            overflow: hidden;
             animation: fadeSlideUp 0.2s;
         }
-        .modal-header {
+        .custom-modal-header {
+            background: #f2fbf7;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid #cce8df;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #cee6dd;
-            padding-bottom: 0.8rem;
         }
-        .modal-header h2 { color: #165f4b; }
-        .close-modal {
-            background: none;
+        .custom-modal-header h3 { color: #165f4b; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+        .custom-modal-body { padding: 1.5rem; font-size: 0.95rem; color: #1a3a2f; }
+        .custom-modal-footer { padding: 1rem 1.5rem; background: #f9fefb; display: flex; justify-content: flex-end; gap: 0.8rem; }
+        .modal-btn {
             border: none;
-            font-size: 1.8rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 600;
             cursor: pointer;
-            color: #6f9a8b;
+            font-family: 'Inter', sans-serif;
         }
-        .tests-list-modal {
-            display: flex;
-            flex-direction: column;
-            gap: 0.7rem;
-        }
-        .test-item-modal {
-            background: #f6fef9;
-            border-radius: 20px;
-            padding: 0.8rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #cee6dd;
-        }
-        .test-info-modal { cursor: pointer; flex: 2; }
-        .test-info-modal strong { color: #1a6e5a; }
-        .btn-delete-modal {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: #c7362b;
-            padding: 0 0.5rem;
-        }
+        .modal-btn-primary { background: #1b6e5a; color: white; }
+        .modal-btn-secondary { background: #ecf3f0; color: #2b6251; }
+        .close-modal-icon { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6f9a8b; }
         footer {
             text-align: center;
             padding: 1.2rem;
@@ -334,11 +271,10 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1>Denver II İnkişaf Testi <span class="badge">📋 Peşəkar versiya</span></h1>
+        <h1>Denver II İnkişaf Testi <span class="badge">📋 peşəkar versiya</span></h1>
         <div class="subhead"> • Xüsusi qayğıya ehtiyacı olan uşaqlar üçün fərdi qiymətləndirmə • </div>
     </div>
 
-    <!-- Yuxarı sağda arxiv düyməsi -->
     <div class="top-actions">
         <button class="archive-btn" id="openArchiveBtn"><i class="fas fa-folder-open"></i> Keçirilmiş testlər</button>
     </div>
@@ -372,21 +308,48 @@
     </footer>
 </div>
 
-<!-- Modal pəncərə -->
-<div id="archiveModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2><i class="fas fa-history"></i> Keçirilmiş testlər</h2>
-            <button class="close-modal" id="closeModalBtn">&times;</button>
+<!-- Modal pəncərə (keçirilmiş testlər üçün) -->
+<div id="archiveModal" class="custom-modal" style="display: none;">
+    <div class="custom-modal-content" style="max-width:700px;">
+        <div class="custom-modal-header">
+            <h3><i class="fas fa-history"></i> Keçirilmiş testlər</h3>
+            <button class="close-modal-icon" id="closeModalBtn">&times;</button>
         </div>
-        <div id="modalTestsList" class="tests-list-modal">
-            <p style="color:#6f9a8b; text-align:center;">Yüklənir...</p>
+        <div class="custom-modal-body" id="modalTestsList">Yüklənir...</div>
+        <div class="custom-modal-footer"><button class="modal-btn modal-btn-secondary" id="closeModalFooterBtn">Bağla</button></div>
+    </div>
+</div>
+
+<!-- Fərdi alert modal (Diqqət) -->
+<div id="customAlertModal" class="custom-modal" style="display: none;">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header">
+            <h3><i class="fas fa-exclamation-triangle"></i> Diqqət</h3>
+            <button class="close-modal-icon" id="closeAlertBtn">&times;</button>
         </div>
+        <div class="custom-modal-body" id="alertMessageText">Mesaj</div>
+        <div class="custom-modal-footer"><button class="modal-btn modal-btn-primary" id="alertOkBtn">Başa düşdüm</button></div>
     </div>
 </div>
 
 <script>
-    // ================= DOMAINS DATA (tam eyni, dəyişilməyib) =================
+    // ================= FƏRDİ ALERT FUNKSİYASI =================
+    function customAlert(message) {
+        return new Promise((resolve) => {
+            const modal = document.getElementById("customAlertModal");
+            const msgDiv = document.getElementById("alertMessageText");
+            msgDiv.innerText = message;
+            modal.style.display = "flex";
+            const closeHandler = () => {
+                modal.style.display = "none";
+                resolve();
+            };
+            document.getElementById("alertOkBtn").onclick = closeHandler;
+            document.getElementById("closeAlertBtn").onclick = closeHandler;
+        });
+    }
+
+    // ================= DOMAINS DATA (tam eyni) =================
     const domainsData = {
         personalSocial: { title: "🧸 Şəxsi-Sosial", desc: "Özünəxidmət, emosiya, sosial qarşılıqlılıq",
             items: [
@@ -435,7 +398,6 @@
     };
     const domainOrder = ["personalSocial", "fineMotor", "language", "grossMotor"];
 
-    // ---------- TESTİ RENDER ET ----------
     function renderTest() {
         const container = document.getElementById("domainsStack");
         container.innerHTML = "";
@@ -460,7 +422,6 @@
         }
     }
 
-    // Cari cavabları əldə et
     function getAllItemResponses() {
         let responses = [];
         for (let key of domainOrder) {
@@ -513,10 +474,13 @@
 
     let currentFullAnalysis = null;
 
-    function displayResultsAndAutoSave() {
+    async function displayResultsAndAutoSave() {
         const ageInput = document.getElementById("childAge").value;
         let childAge = ageInput ? parseFloat(ageInput) : null;
-        if (childAge === null || isNaN(childAge) || childAge < 0) { alert("Yaşı daxil edin!"); return; }
+        if (childAge === null || isNaN(childAge) || childAge < 0) {
+            await customAlert("Zəhmət olmasa uşağın yaşını aylarla daxil edin (0-78).");
+            return;
+        }
         const responses = getAllItemResponses();
         const analysis = computeDetailedAnalysisFromResponses(responses, childAge);
         currentFullAnalysis = { ...analysis, childAge, responses };
@@ -566,7 +530,10 @@
         if (!currentFullAnalysis) return;
         const { childAge, responses, domainStats, avgDevAge, clinicalInterpret, totalDelays } = currentFullAnalysis;
         const childName = document.getElementById("childName").value.trim();
-        if (!childName) { alert("Testi yadda saxlamaq üçün uşağın adını yazın."); return; }
+        if (!childName) {
+            customAlert("Testi yadda saxlamaq üçün uşağın adını yazın.");
+            return;
+        }
         const testDate = document.getElementById("testDate").value || new Date().toISOString().slice(0,10);
         const expertName = document.getElementById("expertName").value.trim() || "göstərilməyib";
         const domainsSummary = {};
@@ -596,7 +563,7 @@
         let saved = JSON.parse(localStorage.getItem("denverSavedTestsFull") || "[]");
         saved.unshift(testRecord);
         localStorage.setItem("denverSavedTestsFull", JSON.stringify(saved));
-        renderModalList(); // modal list yenilə
+        renderModalList();
     }
 
     function renderModalList() {
@@ -606,22 +573,20 @@
             container.innerHTML = `<p style="color:#6f9a8b; text-align:center;">Hələ heç bir test yadda saxlanılmayıb.</p>`;
             return;
         }
-        let html = "";
+        let html = `<div style="display:flex; flex-direction:column; gap:0.7rem;">`;
         saved.forEach(test => {
             html += `
-                <div class="test-item-modal" data-id="${test.id}">
-                    <div class="test-info-modal" data-id="${test.id}" style="cursor:pointer;">
+                <div class="test-item-modal" style="background:#f6fef9; border-radius:20px; padding:0.8rem 1rem; display:flex; justify-content:space-between; align-items:center;">
+                    <div class="test-info-modal" data-id="${test.id}" style="cursor:pointer; flex:2;">
                         <strong>${escapeHtml(test.childName)}</strong> (${test.childAge} ay) - ${test.testDate}<br>
                         <span style="font-size:0.7rem;">${escapeHtml(test.expertName)} | İnkişaf: ${test.avgDevAge} ay</span>
                     </div>
-                    <div class="test-actions">
-                        <button class="btn-delete-modal" data-id="${test.id}" title="Sil"><i class="fas fa-trash-alt"></i></button>
-                    </div>
+                    <button class="btn-delete-modal" data-id="${test.id}" style="background:none; border:none; font-size:1.2rem; cursor:pointer; color:#c7362b;"><i class="fas fa-trash-alt"></i></button>
                 </div>
             `;
         });
+        html += `</div>`;
         container.innerHTML = html;
-        // Silmə düymələri
         document.querySelectorAll('.btn-delete-modal').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -629,9 +594,8 @@
                 deleteSavedTest(id);
             });
         });
-        // Adına klik – yeni səhifədə nəticə
         document.querySelectorAll('.test-info-modal').forEach(el => {
-            el.addEventListener('click', (e) => {
+            el.addEventListener('click', () => {
                 const id = parseInt(el.getAttribute('data-id'));
                 openDetailedReportInNewWindow(id);
             });
@@ -643,9 +607,7 @@
         saved = saved.filter(t => t.id !== id);
         localStorage.setItem("denverSavedTestsFull", JSON.stringify(saved));
         renderModalList();
-        if (saved.length === 0 && document.getElementById("resultsArea")) {
-            document.getElementById("resultsArea").style.display = "none";
-        }
+        if (saved.length === 0) document.getElementById("resultsArea").style.display = "none";
     }
 
     function openDetailedReportInNewWindow(testId) {
@@ -703,7 +665,7 @@
             @media print { button { display: none; } body { padding: 0; } .report-card { box-shadow: none; } }
         </style></head>
         <body><div class="report-card">
-        <h1>📄 Denver İnkişaf Testinin nəticələri</h1>
+        <h1>📄 Keçirilmiş Testin Ətraflı Nəticəsi</h1>
         <p><strong>Uşaq:</strong> ${escapeHtml(childName)} &nbsp;| <strong>Yaş:</strong> ${childAge} ay &nbsp;| <strong>Tarix:</strong> ${testDate}<br>
         <strong>Mütəxəssis:</strong> ${escapeHtml(expertName)} &nbsp;| <strong>İnkişaf yaşı (orta):</strong> ${avgDevAge} ay</p>
         <div class="summary"><strong>🧠 Psixoloji rəy:</strong> ${escapeHtml(clinicalInterpret)}<br><strong>🔔 Toplam gecikmə sayı:</strong> ${totalDelays}</div>
@@ -721,8 +683,11 @@
         document.getElementById("resultsArea").style.display = "none";
         currentFullAnalysis = null;
     }
-    function generateParentReport() {
-        if (!currentFullAnalysis) { alert("Əvvəlcə 'Psixoloji analiz et' düyməsini basın."); return; }
+    async function generateParentReport() {
+        if (!currentFullAnalysis) {
+            await customAlert("Əvvəlcə 'Psixoloji analiz et' düyməsini basın.");
+            return;
+        }
         const { childAge, domainStats, avgDevAge, clinicalInterpret } = currentFullAnalysis;
         const childName = document.getElementById("childName").value.trim() || "Adsız";
         const testDate = document.getElementById("testDate").value || new Date().toISOString().slice(0,10);
@@ -747,13 +712,17 @@
         URL.revokeObjectURL(link.href);
     }
 
-    // Modal əməliyyatlar
-    const modal = document.getElementById("archiveModal");
-    const openBtn = document.getElementById("openArchiveBtn");
-    const closeBtn = document.getElementById("closeModalBtn");
-    openBtn.onclick = () => { renderModalList(); modal.style.display = "flex"; };
-    closeBtn.onclick = () => { modal.style.display = "none"; };
-    window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+    // Modal keçirilmiş testlər idarəsi
+    const archiveModal = document.getElementById("archiveModal");
+    const openArchiveBtn = document.getElementById("openArchiveBtn");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const closeModalFooterBtn = document.getElementById("closeModalFooterBtn");
+    function openModal() { renderModalList(); archiveModal.style.display = "flex"; }
+    function closeModal() { archiveModal.style.display = "none"; }
+    openArchiveBtn.onclick = openModal;
+    closeModalBtn.onclick = closeModal;
+    closeModalFooterBtn.onclick = closeModal;
+    window.onclick = (e) => { if (e.target === archiveModal) closeModal(); };
 
     document.getElementById("testDate").value = new Date().toISOString().slice(0,10);
     renderTest();
