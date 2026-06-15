@@ -267,6 +267,15 @@
             .domain-card, .action-bar, .info-panel, .top-actions { margin-left: 1rem; margin-right: 1rem; }
         }
     </style>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0e5c49">
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/denever/service-worker.js');
+        });
+      }
+    </script>
 </head>
 <body>
 <div class="container">
