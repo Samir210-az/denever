@@ -61,6 +61,9 @@
         .top-actions {
             display: flex;
             justify-content: flex-end;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
             margin: 0.8rem 2rem 0 2rem;
         }
         .archive-btn {
@@ -334,9 +337,7 @@
 @media(max-width:600px){.dvg-head h2{font-size:1.25rem}.dvg-body{padding:6px 18px 20px}}
 </style>
 
-<div class="dvg-bar">
-  <button class="dvg-open" onclick="dvgOpen()">📖 Bu test necə keçirilir? — Tam Təlimat</button>
-</div>
+<!-- təlimat düyməsi top-actions sırasına köçürüldü -->
 
 <div id="dvgModal" onclick="if(event.target===this)dvgClose()">
  <div class="dvg-card">
@@ -443,6 +444,7 @@ document.getElementById('dvgModal').addEventListener('mousemove',function(e){
 
     <div class="top-actions">
         <button class="archive-btn" id="openArchiveBtn"><i class="fas fa-folder-open"></i> Keçirilmiş testlər</button>
+        <button class="dvg-open" onclick="dvgOpen()" style="font-size:.85rem;padding:.5rem 1.2rem;margin-left:10px;border-radius:60px">📖 Keçirilmə Təlimatı</button>
     </div>
 
     <div class="info-panel">
