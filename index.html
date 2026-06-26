@@ -271,8 +271,11 @@
     <meta name="theme-color" content="#0e5c49">
     <script>
       if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.addEventListener('controllerchange', function() {
+          if (!window.__swReloaded) { window.__swReloaded = true; window.location.reload(); }
+        });
         window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/denever/service-worker.js');
+          navigator.serviceWorker.register('/denever/service-worker.js').then(function(reg){ reg.update(); });
         });
       }
     </script>
