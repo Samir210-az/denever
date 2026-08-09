@@ -284,6 +284,26 @@
     </script>
 <script src="licenses-data.js"></script>
 <script src="license-check.js" data-tool="denever"></script>
+<script>
+(function(){
+  document.addEventListener('DOMContentLoaded', function(){
+    if(window.LICENSE && LICENSE.init){
+      LICENSE.init('#domainsStack', 'input[type=radio]');
+      LICENSE.init('#analyzeBtn');
+    }
+    var tapEl = document.getElementById('anpLogoTap');
+    if(tapEl){
+      var tapCount = 0, tapTimer = null;
+      tapEl.addEventListener('click', function(){
+        tapCount++;
+        clearTimeout(tapTimer);
+        if(tapCount >= 5){ tapCount = 0; location.href = 'admin.html'; return; }
+        tapTimer = setTimeout(function(){ tapCount = 0; }, 900);
+      });
+    }
+  });
+})();
+</script>
 </head>
 <body>
 <!-- ====== KEÇİRİLMƏ TƏLİMATI (popup) — by s_akhundoff ====== -->
@@ -438,7 +458,7 @@ document.getElementById('dvgModal').addEventListener('mousemove',function(e){
 
 <div class="container">
     <div class="header">
-        <h1>Denver II İnkişaf Testi <span class="badge">📋 peşəkar versiya</span></h1>
+        <h1 id="anpLogoTap" style="cursor:default">Denver II İnkişaf Testi <span class="badge">📋 peşəkar versiya</span></h1>
         <div class="subhead"> • Xüsusi qayğıya ehtiyacı olan uşaqlar üçün fərdi qiymətləndirmə • </div>
     </div>
 
