@@ -1,7 +1,7 @@
 const CACHE_NAME = 'denver2-v2';
 const urlsToCache = [
-  '/denever/',
-  '/denever/index.html'
+  './',
+  './index.html'
 ];
 
 self.addEventListener('install', function(event) {
@@ -33,7 +33,7 @@ self.addEventListener('fetch', function(event) {
         caches.open(CACHE_NAME).then(function(c){ c.put(req, copy); });
         return res;
       }).catch(function(){
-        return caches.match(req).then(function(r){ return r || caches.match('/denever/index.html'); });
+        return caches.match(req).then(function(r){ return r || caches.match('./index.html'); });
       })
     );
     return;

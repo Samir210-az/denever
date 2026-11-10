@@ -278,7 +278,7 @@
           if (!window.__swReloaded) { window.__swReloaded = true; window.location.reload(); }
         });
         window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/denever/service-worker.js').then(function(reg){ reg.update(); });
+          navigator.serviceWorker.register('service-worker.js').then(function(reg){ reg.update(); });
         });
       }
     </script>

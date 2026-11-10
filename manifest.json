@@ -2,7 +2,7 @@
   "name": "Denver II İnkişaf Testi",
   "short_name": "Denver II",
   "description": "Xüsusi qayğıya ehtiyacı olan uşaqlar üçün Denver II inkişaf testi",
-  "start_url": "/denever/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#e8f0ec",
   "theme_color": "#0e5c49",
