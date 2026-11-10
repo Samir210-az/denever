@@ -583,6 +583,7 @@ document.getElementById('dvgModal').addEventListener('mousemove',function(e){
 (function(){
   var btn = document.getElementById('startTestBtn'), area = document.getElementById('testArea');
   btn.addEventListener('click', function(){
+    if (area.hidden && window.LICENSE && !LICENSE.isVerified()) { LICENSE._openGate(function(){ btn.click(); }); return; }
     var open = area.hidden;
     area.hidden = !open;
     btn.setAttribute('aria-expanded', open);
