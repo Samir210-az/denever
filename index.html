@@ -30,7 +30,22 @@
             position: relative;
             overflow: hidden;
         }
+        .hero-ikon {
+            display: block;
+            width: 84px;
+            height: 84px;
+            margin-bottom: 0.6rem;
+            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.28));
+            animation: heroUzan 4s ease-in-out infinite;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            position: relative;
+            z-index: 1;
+        }
+        @keyframes heroUzan { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-8px) rotate(3deg); } }
+        @media (prefers-reduced-motion: reduce) { .hero-ikon { animation: none; } }
         .header::after {
+            display: none;
             content: "🧸";
             position: absolute;
             bottom: -20px;
@@ -475,7 +490,8 @@ document.getElementById('dvgModal').addEventListener('mousemove',function(e){
 
 <div class="container">
     <div class="header">
-        <h1 id="anpLogoTap" style="cursor:default">Denver 1 İnkişaf Testi <span class="badge">📋 peşəkar versiya</span></h1>
+        <img src="hero-3d.png" alt="" class="hero-ikon" id="anpLogoTap" width="84" height="84" draggable="false">
+        <h1>Denver 1 İnkişaf Testi <span class="badge">📋 peşəkar versiya</span></h1>
         <div class="subhead"> • Xüsusi qayğıya ehtiyacı olan uşaqlar üçün fərdi qiymətləndirmə • </div>
         <p class="hero-lead">Uşağın yaşına görə gözlənilən bacarıqları dörd inkişaf sahəsi üzrə yoxlayın. Hər bacarığın yanında normativ ay göstərilib, nəticə və valideyn arayışı avtomatik hazırlanır.</p>
         <ul class="hero-stats">
