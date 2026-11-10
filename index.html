@@ -490,7 +490,7 @@ document.getElementById('dvgModal').addEventListener('mousemove',function(e){
     </div>
 
     <div class="top-actions">
-        <button class="archive-btn" id="openArchiveBtn"><i class="fas fa-folder-open"></i> Keçirilmiş testlər</button>
+        <button class="archive-btn" id="openArchiveBtn" hidden><i class="fas fa-folder-open"></i> Keçirilmiş testlər</button>
         <button class="dvg-open" onclick="dvgOpen()" style="font-size:.85rem;padding:.5rem 1.2rem;margin-left:10px;border-radius:60px">📖 Keçirilmə Təlimatı</button>
     </div>
 
@@ -590,6 +590,17 @@ document.getElementById('dvgModal').addEventListener('mousemove',function(e){
     btn.textContent = open ? '▲ Sualları gizlət' : '▶ Testə başla';
     if (open) area.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   });
+})();
+</script>
+<script>
+(function(){
+  var arc = document.getElementById('openArchiveBtn');
+  function sync(){
+    var ok = !!(window.LICENSE && LICENSE.isVerified && LICENSE.isVerified());
+    if (arc.hidden === ok) arc.hidden = !ok;
+    if (!ok) { var m = document.getElementById('archiveModal'); if (m) m.style.display = 'none'; }
+  }
+  sync(); setInterval(sync, 1000);
 })();
 </script>
 </body>
