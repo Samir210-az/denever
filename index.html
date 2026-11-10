@@ -269,6 +269,22 @@
             .questions-grid { grid-template-columns: 1fr; padding: 1rem; }
             .domain-card, .action-bar, .info-panel, .top-actions { margin-left: 1rem; margin-right: 1rem; }
         }
+        .hero-lead { margin-top: 1rem; max-width: 640px; font-size: 0.95rem; line-height: 1.55; opacity: 0.95; }
+        .hero-stats { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 1.3rem; position: relative; z-index: 1; }
+        .hero-stats li { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); border-radius: 1.2rem; padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 2px; }
+        .hero-stats b { font-size: 1.45rem; line-height: 1.1; }
+        .hero-stats span { font-size: 0.74rem; opacity: 0.85; line-height: 1.3; }
+        .hero-domains { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; position: relative; z-index: 1; }
+        .hero-domains li { background: rgba(255,255,255,0.92); color: #0e5c49; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.85rem; border-radius: 60px; }
+        .start-wrap { margin: 1rem 2rem; padding: 1.3rem 1.6rem; background: #f6fef9; border: 1px solid #cee6dd; border-radius: 1.6rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+        .start-steps { margin: 0; padding-left: 1.2rem; color: #1a4d40; font-size: 0.88rem; line-height: 1.7; flex: 1; min-width: 220px; }
+        .start-btn { font-size: 1rem; padding: 0.85rem 2rem; }
+        .start-btn:focus-visible { outline: 3px solid #f2c94c; outline-offset: 3px; }
+        @media (max-width: 700px) {
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .start-wrap { margin-left: 1rem; margin-right: 1rem; }
+            .start-btn { width: 100%; }
+        }
     </style>
     <link rel="manifest" href="manifest.json?v=4">
     <meta name="theme-color" content="#0e5c49">
@@ -461,6 +477,16 @@ document.getElementById('dvgModal').addEventListener('mousemove',function(e){
     <div class="header">
         <h1 id="anpLogoTap" style="cursor:default">Denver 1 İnkişaf Testi <span class="badge">📋 peşəkar versiya</span></h1>
         <div class="subhead"> • Xüsusi qayğıya ehtiyacı olan uşaqlar üçün fərdi qiymətləndirmə • </div>
+        <p class="hero-lead">Uşağın yaşına görə gözlənilən bacarıqları dörd inkişaf sahəsi üzrə yoxlayın. Hər bacarığın yanında normativ ay göstərilib, nəticə və valideyn arayışı avtomatik hazırlanır.</p>
+        <ul class="hero-stats">
+            <li><b>4</b><span>inkişaf sahəsi</span></li>
+            <li><b>60</b><span>bacarıq</span></li>
+            <li><b>0–78</b><span>ay yaş aralığı</span></li>
+            <li><b>3</b><span>cavab: bacarır / bacarmır / müşahidə yox</span></li>
+        </ul>
+        <ul class="hero-domains">
+            <li>🧸 Şəxsi-Sosial</li><li>✍️ İncə Motor</li><li>🗣️ Dil &amp; Ünsiyyət</li><li>🏃 Ümumi Motor</li>
+        </ul>
     </div>
 
     <div class="top-actions">
@@ -475,12 +501,23 @@ document.getElementById('dvgModal').addEventListener('mousemove',function(e){
         <div class="info-field"><label>👩‍⚕️ Mütəxəssis adı</label><input type="text" id="expertName" placeholder="Psixoloq / Həkim"></div>
     </div>
 
+    <div class="start-wrap">
+        <ol class="start-steps">
+            <li>Uşağın adını və yaşını (ayla) yazın.</li>
+            <li>«Testə başla» düyməsinə toxunub hər bacarığı qeyd edin.</li>
+            <li>«Psixoloji analiz et» ilə nəticəni və arayışı alın.</li>
+        </ol>
+        <button type="button" class="btn btn-primary start-btn" id="startTestBtn" aria-expanded="false" aria-controls="testArea">▶ Testə başla</button>
+    </div>
+
+    <div id="testArea" hidden>
     <div id="domainsStack"></div>
 
     <div class="action-bar">
         <button class="btn btn-primary" id="analyzeBtn">📊 Psixoloji analiz et</button>
         <button class="btn btn-secondary" id="resetBtn">⟳ Cavabları sıfırla</button>
         <button class="btn btn-report" id="reportBtn">📄 Valideyn çıxarışı (arayış)</button>
+    </div>
     </div>
 
     <div id="resultsArea" class="results-panel">
@@ -540,6 +577,18 @@ document.getElementById('dvgModal').addEventListener('mousemove',function(e){
     }, 800);
   });
   mo.observe(el, {childList:true, subtree:true, characterData:true});
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('startTestBtn'), area = document.getElementById('testArea');
+  btn.addEventListener('click', function(){
+    var open = area.hidden;
+    area.hidden = !open;
+    btn.setAttribute('aria-expanded', open);
+    btn.textContent = open ? '▲ Sualları gizlət' : '▶ Testə başla';
+    if (open) area.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  });
 })();
 </script>
 </body>
